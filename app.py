@@ -1,10 +1,7 @@
 from users import User
 from flask import Flask, render_template, session, redirect, request, url_for, g,jsonify,make_response,flash
 from werkzeug.security import generate_password_hash,check_password_hash
-import requests
-import uuid
 import jwt
-import datetime
 from database import Database
 import jwt
 from functools import wraps
