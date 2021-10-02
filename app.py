@@ -184,8 +184,6 @@ def login():
         cursor.execute(sql, sql_where)
         row = cursor.fetchone()
         email = row['email']
-        firstname = row['firstname']
-        lastname = row['lastname']
         password_hash = row['password_hash']
       
         if row:
@@ -193,11 +191,8 @@ def login():
                 token = jwt.encode(payload, "secret")
                 decoded = jwt.decode(token, "secret", audience="urn:foo", algorithms=["HS256"])
                 session['email'] = email
-                session['firstname'] = firstname
-                session['lastname'] = lastname
-               
                 
-                return make_response(jsonify({'message' : 'You are logged in successfully'},lastname )
+                return make_response(jsonify({'message' : 'You are logged in successfully'}, 200)
                 )
             else:
                 resp = jsonify({'message' : 'Bad Request - invalid password'})
